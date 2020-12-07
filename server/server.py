@@ -3,11 +3,11 @@ import Pyro5.api
 import os
 from PhoneBookModel import *
 
-def start_with_ns(hostname="localhost",port=9090):
+def start_with_ns(myserver='localhost',hostname="localhost",port=9090):
     #name server harus di start dulu dengan  pyro5-ns
     #gunakan URI untuk referensi name server yang akan digunakan
     #untuk mengecek service apa yang ada di ns, gunakan pyro5-nsc list
-    daemon = Pyro5.server.Daemon()
+    daemon = Pyro5.server.Daemon(host=myserver)
     ns = Pyro5.api.locate_ns(host=hostname,port=port,broadcast=True)
     phonebook = Pyro5.api.expose(PhoneBook) #Phonebook adalah nama class dari model phonebookDB
     uri = daemon.register(phonebook)
@@ -17,9 +17,10 @@ def start_with_ns(hostname="localhost",port=9090):
 
 
 if __name__ == '__main__':
-    servername=os.getenv('PYROSERVERNAME') or 'localhost'
-    serverport=os.getenv('PYROSERVERPORT') or 9090
-    start_with_ns(hostname=servername,port=serverport)
+    myserver=os.getenv('PYROMYSERVER') or 'localhost'
+    nameserver=os.getenv('PYRONAMESERVER') or 'localhost'
+    nameserverport=os.getenv('PYRONAMESERVERPORT') or 9090
+    start_with_ns(hostname=nameserver,port=nameserverport)
 
 
 
