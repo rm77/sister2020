@@ -20,7 +20,7 @@ if __name__ == '__main__':
     myserver=os.getenv('PYROMYSERVER') or 'localhost'
     nameserver=os.getenv('PYRONAMESERVER') or 'localhost'
     nameserverport=os.getenv('PYRONAMESERVERPORT') or 9090
-    start_with_ns(hostname=nameserver,port=nameserverport)
+    start_with_ns(myserver=myserver,hostname=nameserver,port=nameserverport)
 
 
 
