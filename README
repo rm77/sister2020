@@ -1,0 +1,20 @@
+untuk menjalankan di lokal (127.0.0.1)
+requirements
+- python 3.8
+- pip
+- virtualenv
+
+#first steps
+1. python3.8 -m virtualenv venv
+2. source venv/bin/activate
+3. pip3 install -r requirements.txt
+4. pyro5-ns (menjalankan pyro5 name server), gunakan pyro5-nsc list untuk melihat daftar object
+
+
+#untuk menjalankan server
+1. cd server
+2. python3 server.py
+
+#untuk menjalakan client
+1. cd client
+2. python3 client.py
